@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<section class="cabecalho-pagina">
+    <span class="etiqueta">PAINEL VISUAL</span>
+    <h1>CONFIGURAÇÃO</h1>
+    <p>Altere o nome do site e cadastre seus downloads sem mexer no código.</p>
+</section>
+
+<section class="painel">
+    <div class="bloco-config">
+        <h2>Dados do site</h2>
+        <div class="linha-form">
+            <label>
+                Nome do site
+                <input id="nome_site" value="{{ config.get('nome_site', '') }}" maxlength="80">
+            </label>
+            <label>
+                Subtítulo
+                <input id="subtitulo" value="{{ config.get('subtitulo', '') }}" maxlength="180">
+            </label>
+        </div>
+        <button class="botao principal" onclick="salvarConfig()">SALVAR DADOS DO SITE</button>
+    </div>
+
+    <div class="bloco-config">
+        <div class="titulo-config">
+            <div>
+                <h2>Adicionar jogo</h2>
+                <p>O link precisa ser de um arquivo ou página de download autorizado.</p>
+            </div>
+        </div>
+
+        <div class="grade-form">
+            <label>Nome do jogo<input id="nome" placeholder="Ex.: Meu jogo"></label>
+            <label>Categoria<input id="categoria" placeholder="Ex.: Terror"></label>
+            <label>Versão<input id="versao" placeholder="Ex.: 2.04"></label>
+            <label>Tamanho<input id="tamanho" placeholder="Ex.: 4,5 GB"></label>
+            <label class="campo-largo">URL da imagem<input id="imagem" placeholder="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS80nH5OVeLX7GgHk_H8NJFNnNag0qs09pETljplPoDvA&s=10"></label>
+            <label class="campo-largo">Link do download<input id="link" placeholder="https://mediafire.com/file/vb76f7mzoarm1pp/phasmophobia.rar/file"></label>
+            <label class="campo-largo">Descrição<textarea id="descricao" rows="4" placeholder="Descrição curta do jogo"></textarea></label>
+            <label class="check"><input id="destaque" type="checkbox"> Mostrar em destaque na página inicial</label>
+        </div>
+
+        <button class="botao principal" onclick="adicionarJogo()">ADICIONAR JOGO</button>
+        <p id="mensagem" class="mensagem"></p>
+    </div>
+
+    <div class="bloco-config">
+        <h2>Jogos cadastrados</h2>
+        <div class="lista-admin">
+            {% for jogo in jogos %}
+            <div class="item-admin" id="jogo-{{ jogo.id }}">
+                <div>
+                    <strong>{{ jogo.nome }}</strong>
+                    <span>{{ jogo.categoria }}{% if jogo.versao %} • {{ jogo.versao }}{% endif %}</span>
+                </div>
+                <div class="acoes">
+                    <a href="{{ jogo.link }}" target="_blank" rel="noopener noreferrer">Testar link</a>
+                    <button onclick="excluirJogo({{ jogo.id }})">Excluir</button>
+                </div>
+            </div>
+            {% else %}
+            <p>Nenhum jogo cadastrado.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/config.js') }}"></script>
+{% endblock %}

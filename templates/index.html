@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<section class="hero">
+    <div class="nevoa nevoa-1"></div>
+    <div class="nevoa nevoa-2"></div>
+    <div class="hero-conteudo">
+        <span class="etiqueta">PORTAL DE JOGOS</span>
+        <h1>{{ config.get('nome_site', 'NIGHTFALL GAMES') }}</h1>
+        <p>{{ config.get('subtitulo', 'Downloads e novidades do mundo dos jogos') }}</p>
+        <div class="hero-botoes">
+            <a class="botao principal" href="{{ url_for('downloads') }}">VER DOWNLOADS</a>
+            <a class="botao secundario" href="{{ url_for('configuracao') }}">ABRIR CONFIGURAÇÃO</a>
+        </div>
+    </div>
+</section>
+
+<section class="secao">
+    <div class="titulo-secao">
+        <div>
+            <span class="etiqueta">EM DESTAQUE</span>
+            <h2>Jogos adicionados</h2>
+        </div>
+        <a href="{{ url_for('downloads') }}">Ver todos →</a>
+    </div>
+
+    <div class="grade-jogos">
+        {% for jogo in destaques %}
+        <article class="card-jogo">
+            <div class="capa" {% if jogo.imagem %}style="background-image:url('{{ jogo.imagem }}')"{% endif %}>
+                {% if not jogo.imagem %}<span>{{ jogo.nome[:1] }}</span>{% endif %}
+                <div class="sombra-capa"></div>
+            </div>
+            <div class="card-conteudo">
+                <span class="categoria">{{ jogo.categoria }}</span>
+                <h3>{{ jogo.nome }}</h3>
+                <p>{{ jogo.descricao or 'Download disponível na página do jogo.' }}</p>
+                <a class="botao-download" href="{{ jogo.link }}" target="_blank" rel="noopener noreferrer">BAIXAR AQUI</a>
+            </div>
+        </article>
+        {% else %}
+        <div class="vazio">
+            <h3>Nenhum jogo cadastrado ainda</h3>
+            <p>Abra a configuração e adicione o primeiro download.</p>
+            <a class="botao principal" href="{{ url_for('configuracao') }}">CADASTRAR JOGO</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="publicacoes" class="secao faixa">
+    <span class="etiqueta">PUBLICAÇÕES</span>
+    <h2>Atualizações, versões e novidades</h2>
+    <p>Use esta área para escrever notícias sobre os jogos, avisos de atualização e instruções importantes.</p>
+</section>
+
+<section id="sobre" class="secao sobre">
+    <div>
+        <span class="etiqueta">SOBRE NÓS</span>
+        <h2>Seu portal personalizado</h2>
+    </div>
+    <p>Este projeto foi criado para funcionar localmente no Windows e permitir que você cadastre jogos e links por um painel visual.</p>
+</section>
+{% endblock %}

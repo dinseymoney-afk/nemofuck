@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config.get('nome_site', 'NIGHTFALL GAMES') }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="topo">
+        <a class="logo" href="{{ url_for('inicio') }}">
+            <span class="logo-icone">☠</span>
+            <span>
+                <strong>{{ config.get('nome_site', 'NIGHTFALL GAMES') }}</strong>
+                <small>GAME HUB</small>
+            </span>
+        </a>
+
+        <nav class="menu">
+            <a href="{{ url_for('inicio') }}">INÍCIO</a>
+            <a href="{{ url_for('downloads') }}" class="{% if request.endpoint == 'downloads' %}ativo{% endif %}">DOWNLOAD</a>
+            <a href="#publicacoes">PUBLICAÇÃO</a>
+            <a href="#sobre">SOBRE NÓS</a>
+            <a href="{{ url_for('configuracao') }}" class="admin-link">CONFIGURAR</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Use apenas arquivos e links que você tem autorização para distribuir.</p>
+    </footer>
+</body>
+</html>

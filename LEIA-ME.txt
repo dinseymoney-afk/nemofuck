@@ -1,0 +1,27 @@
+SITE NIGHTFALL GAMES — INSTRUÇÕES
+
+1. Extraia a pasta ZIP.
+2. Abra a pasta "site_jogos".
+3. Dê dois cliques em "iniciar.bat".
+4. O navegador abrirá automaticamente em:
+   http://127.0.0.1:5000
+
+PAINEL DE CONFIGURAÇÃO
+
+1. No menu superior, clique em "CONFIGURAR".
+2. Para mudar o nome do site:
+   - Digite no campo "Nome do site".
+   - Clique em "SALVAR DADOS DO SITE".
+3. Para adicionar um jogo:
+   - Preencha "Nome do jogo".
+   - Preencha "Link do download".
+   - Os outros campos são opcionais.
+   - Clique em "ADICIONAR JOGO".
+4. O jogo aparecerá automaticamente na página "DOWNLOAD".
+
+IMPORTANTE
+
+- Use apenas jogos, demos, mods, arquivos próprios ou links que você tem autorização para distribuir.
+- Para trocar o endereço público do site, será necessário publicar a pasta em uma hospedagem e configurar um domínio.
+- O endereço local http://127.0.0.1:5000 funciona apenas no seu computador.
+- Não apague a pasta "data", porque ela guarda os jogos cadastrados.

@@ -1,0 +1,576 @@
+:root {
+    --fundo: #08090b;
+    --fundo-2: #101216;
+    --cartao: #15181d;
+    --linha: rgba(255,255,255,.11);
+    --texto: #f7f7f4;
+    --texto-2: #a8abb2;
+    --destaque: #f0ad35;
+    --destaque-2: #cc741f;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 70% 12%, rgba(44,53,63,.28), transparent 28%),
+        linear-gradient(180deg, #050607 0%, var(--fundo) 100%);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.topo {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    min-height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(3,4,5,.93);
+    border-bottom: 1px solid var(--linha);
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icone {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.55);
+    background: linear-gradient(145deg, #25282e, #0b0c0f);
+    font-size: 27px;
+}
+
+.logo strong {
+    display: block;
+    font-family: Georgia, serif;
+    letter-spacing: 2px;
+    font-size: 17px;
+}
+
+.logo small {
+    display: block;
+    margin-top: 4px;
+    color: var(--texto-2);
+    letter-spacing: 5px;
+    font-size: 9px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.menu a {
+    position: relative;
+    padding: 10px 0;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    height: 2px;
+    background: var(--destaque);
+    transition: .2s;
+}
+
+.menu a:hover::after,
+.menu a.ativo::after {
+    right: 0;
+}
+
+.admin-link {
+    color: var(--destaque);
+}
+
+.hero {
+    position: relative;
+    min-height: 590px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--linha);
+    background:
+        linear-gradient(90deg, rgba(3,4,5,.98) 0%, rgba(3,4,5,.8) 42%, rgba(3,4,5,.2) 100%),
+        radial-gradient(circle at 75% 45%, rgba(125,142,153,.22), transparent 27%),
+        linear-gradient(135deg, #11151a, #030405);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .25;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 38px 38px;
+    mask-image: linear-gradient(to right, transparent, black);
+}
+
+.hero-conteudo {
+    position: relative;
+    z-index: 2;
+    width: min(760px, 88%);
+    margin-left: 8vw;
+}
+
+.etiqueta {
+    color: var(--destaque);
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.hero h1,
+.cabecalho-pagina h1 {
+    margin: 14px 0 16px;
+    font-family: Georgia, serif;
+    font-size: clamp(48px, 7vw, 92px);
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    max-width: 650px;
+    color: #d6d8dc;
+    font-size: 21px;
+    line-height: 1.6;
+}
+
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.botao,
+.botao-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.botao.principal,
+.botao-download {
+    background: linear-gradient(135deg, var(--destaque), var(--destaque-2));
+    color: #14100a;
+}
+
+.botao.secundario {
+    border-color: rgba(255,255,255,.35);
+    background: rgba(255,255,255,.04);
+}
+
+.secao {
+    width: min(1240px, 90%);
+    margin: 0 auto;
+    padding: 82px 0;
+}
+
+.titulo-secao,
+.titulo-config {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+h2 {
+    margin: 8px 0 0;
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 400;
+}
+
+.grade-jogos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card-jogo {
+    overflow: hidden;
+    background: var(--cartao);
+    border: 1px solid var(--linha);
+    box-shadow: 0 20px 60px rgba(0,0,0,.22);
+}
+
+.capa {
+    position: relative;
+    height: 250px;
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at 70% 30%, rgba(240,173,53,.22), transparent 30%),
+        linear-gradient(145deg, #252b32, #080a0d);
+    background-size: cover;
+    background-position: center;
+}
+
+.capa > span {
+    font-family: Georgia, serif;
+    font-size: 98px;
+    color: rgba(255,255,255,.7);
+}
+
+.sombra-capa {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5,6,7,.92), transparent 55%);
+}
+
+.card-conteudo {
+    padding: 25px;
+}
+
+.categoria {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--destaque);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card-conteudo h3 {
+    margin: 0 0 12px;
+    font-family: Georgia, serif;
+    font-size: 28px;
+}
+
+.card-conteudo p {
+    min-height: 66px;
+    color: var(--texto-2);
+    line-height: 1.5;
+}
+
+.metadados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0;
+    color: #c9cbd0;
+    font-size: 13px;
+}
+
+.botao-download {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.faixa {
+    width: 100%;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: linear-gradient(90deg, #111419, #090a0c);
+    border-top: 1px solid var(--linha);
+    border-bottom: 1px solid var(--linha);
+}
+
+.faixa p,
+.sobre p {
+    max-width: 760px;
+    color: var(--texto-2);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.sobre {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 60px;
+}
+
+.cabecalho-pagina {
+    padding: 90px 8vw 62px;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.35)),
+        linear-gradient(135deg, #181d24, #050607);
+    border-bottom: 1px solid var(--linha);
+}
+
+.cabecalho-pagina p {
+    color: var(--texto-2);
+    font-size: 18px;
+}
+
+.busca {
+    display: flex;
+    max-width: 700px;
+    margin-top: 28px;
+}
+
+.busca input {
+    flex: 1;
+    min-height: 50px;
+    padding: 0 16px;
+    color: white;
+    background: #111419;
+    border: 1px solid var(--linha);
+    outline: none;
+}
+
+.busca button {
+    padding: 0 24px;
+    color: #171008;
+    background: var(--destaque);
+    border: 0;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.painel {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 64px 0;
+}
+
+.bloco-config {
+    margin-bottom: 28px;
+    padding: 30px;
+    background: var(--cartao);
+    border: 1px solid var(--linha);
+}
+
+.bloco-config h2 {
+    margin-top: 0;
+    font-size: 32px;
+}
+
+.linha-form,
+.grade-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0;
+}
+
+.grade-form {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.campo-largo {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: grid;
+    gap: 8px;
+    color: #e3e5e8;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 13px 14px;
+    color: white;
+    background: #0d0f12;
+    border: 1px solid var(--linha);
+    outline: none;
+    font: inherit;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--destaque);
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    grid-column: 1 / -1;
+}
+
+.check input {
+    width: auto;
+}
+
+.mensagem {
+    min-height: 20px;
+    color: var(--destaque);
+}
+
+.lista-admin {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.item-admin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px;
+    background: #0d0f12;
+    border: 1px solid var(--linha);
+}
+
+.item-admin strong,
+.item-admin span {
+    display: block;
+}
+
+.item-admin span {
+    margin-top: 5px;
+    color: var(--texto-2);
+    font-size: 13px;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.acoes a,
+.acoes button {
+    padding: 9px 12px;
+    color: white;
+    background: #1a1e24;
+    border: 1px solid var(--linha);
+    cursor: pointer;
+}
+
+.acoes button {
+    color: #ffb4b4;
+}
+
+.vazio {
+    grid-column: 1 / -1;
+    padding: 60px;
+    text-align: center;
+    background: var(--cartao);
+    border: 1px solid var(--linha);
+}
+
+footer {
+    padding: 28px 6vw;
+    color: #858991;
+    text-align: center;
+    border-top: 1px solid var(--linha);
+}
+
+@media (max-width: 900px) {
+    .topo {
+        align-items: flex-start;
+        gap: 18px;
+        flex-direction: column;
+    }
+
+    .menu {
+        width: 100%;
+        gap: 18px;
+        overflow-x: auto;
+        padding-bottom: 6px;
+    }
+
+    .grade-jogos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grade-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sobre {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 620px) {
+    .hero {
+        min-height: 520px;
+    }
+
+    .hero-conteudo {
+        margin-left: 6vw;
+    }
+
+    .hero h1,
+    .cabecalho-pagina h1 {
+        font-size: 44px;
+    }
+
+    .grade-jogos,
+    .linha-form,
+    .grade-form {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-largo,
+    .check {
+        grid-column: auto;
+    }
+
+    .item-admin {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .busca {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .busca button {
+        min-height: 48px;
+    }
+}
+
+/* Tema Phasmophobia Terror */
+body {
+ background:
+ linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.96)),
+ url("/static/images/phasmophobia.jpg") center top/cover fixed no-repeat;
+}
+.hero {
+ background:
+ linear-gradient(90deg,rgba(0,0,0,.98),rgba(0,0,0,.55)),
+ url("/static/images/phasmophobia.jpg") center/cover no-repeat;
+}
+.card-jogo {
+ background:#080808;
+ border-color:rgba(80,120,160,.25);
+}
+.capa {
+ filter: brightness(.85) contrast(1.15);
+}
+.etiqueta { color:#c51f2b; }
+.botao-download,.botao.principal {
+ background:linear-gradient(135deg,#8b0000,#250000);
+ color:white;
+}

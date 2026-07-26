@@ -1,0 +1,19 @@
+{
+  "config": {
+    "nome_site": "PHASMOPHOBIA GAMES",
+    "subtitulo": "Portal de terror, jogos e downloads assustadores"
+  },
+  "jogos": [
+    {
+      "id": 1,
+      "nome": "Phasmophobia",
+      "categoria": "Terror",
+      "descricao": "Investigue fenômenos paranormais em uma experiência cooperativa de terror.",
+      "imagem": "/static/images/phasmophobia.jpg",
+      "link": "https://www.mediafire.com/file/vb76f7mzoarm1pp/phasmophobia.rar/file",
+      "versao": "1.0",
+      "tamanho": "—",
+      "destaque": true
+    }
+  ]
+}

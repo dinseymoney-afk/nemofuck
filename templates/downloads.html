@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<section class="cabecalho-pagina">
+    <span class="etiqueta">BIBLIOTECA</span>
+    <h1>DOWNLOADS</h1>
+    <p>Escolha um jogo e abra o link configurado.</p>
+
+    <form class="busca" method="get">
+        <input type="search" name="q" value="{{ busca }}" placeholder="Pesquisar jogo...">
+        <button type="submit">PESQUISAR</button>
+    </form>
+</section>
+
+<section class="secao">
+    <div class="grade-jogos">
+        {% for jogo in jogos %}
+        <article class="card-jogo">
+            <div class="capa" {% if jogo.imagem %}style="background-image:url('{{ jogo.imagem }}')"{% endif %}>
+                {% if not jogo.imagem %}<span>{{ jogo.nome[:1] }}</span>{% endif %}
+                <div class="sombra-capa"></div>
+            </div>
+            <div class="card-conteudo">
+                <span class="categoria">{{ jogo.categoria }}</span>
+                <h3>{{ jogo.nome }}</h3>
+                <p>{{ jogo.descricao }}</p>
+                <div class="metadados">
+                    {% if jogo.versao %}<span>Versão: {{ jogo.versao }}</span>{% endif %}
+                    {% if jogo.tamanho %}<span>Tamanho: {{ jogo.tamanho }}</span>{% endif %}
+                </div>
+                <a class="botao-download" href="{{ jogo.link }}" target="_blank" rel="noopener noreferrer">BAIXAR AQUI</a>
+            </div>
+        </article>
+        {% else %}
+        <div class="vazio">
+            <h3>Nenhum resultado</h3>
+            <p>Cadastre um jogo ou altere a pesquisa.</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
